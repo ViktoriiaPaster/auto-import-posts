@@ -5,6 +5,13 @@ Tested up to: 6.8.1
 Stable tag: 1.0
 A custom plugin to fetch and create posts from an Mockaroo API response.
 
+== Configuration ==
+Before using the plugin, please set the api key:
+
+1. Open wp-config.php file
+2. Add the following line: `define('API_KEY', 'api-key');`
+
+
 == Usage ==
 Use the [aip] shortcode to display imported posts.
 
@@ -17,8 +24,8 @@ Shortcode Attributes:
 Example:
 [aip title="Articles" count="5" sort="rating"]
 
-== Changelog ==
 
+== Changelog ==
 = 1.0 =
 * Initial release.
 
