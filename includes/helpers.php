@@ -1,14 +1,25 @@
 <?php
 
-// Fetch posts
+// Define API_KEY constant if not defined
+if (!defined('API_KEY')) {
+    define('API_KEY', '');
+}
 
+// Fetch posts
 function aip_fetch_posts()
 {
+    $api_key = defined('API_KEY') ? API_KEY : '';
+
+    if (empty($api_key)) {
+        error_log('API Error: API key is not defined');
+        return [];
+    }
+
     $url = 'https://my.api.mockaroo.com/posts.json';
 
     $response = wp_remote_get($url, array(
         'headers' => array(
-            'X-API-Key' => '413dfbf0'
+            'X-API-Key' => $api_key,
         )
     ));
 
