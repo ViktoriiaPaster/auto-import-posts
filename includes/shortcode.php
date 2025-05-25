@@ -66,8 +66,8 @@ function aip_render_posts($articles, $shortcode_attr)
     return $output;
 }
 
-// Create shortcode
-function aip_handle_shortcode($atts)
+// Enqueue styles for shortcode
+function aip_enqueue_style_shortcode()
 {
     wp_enqueue_style(
         'aip_style',
@@ -75,6 +75,12 @@ function aip_handle_shortcode($atts)
         [],
         '1.0'
     );
+}
+
+// Create shortcode
+function aip_handle_shortcode($atts)
+{
+    aip_enqueue_style_shortcode();
 
     $shortcode_attr = shortcode_atts(array(
         'title' => 'Articles',
