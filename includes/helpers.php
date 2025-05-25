@@ -125,6 +125,6 @@ function aip_insert_post($array)
     }
 
     if (isset($image) && $image !== '') {
-        aip_upload_image($array['image'], $post_id);
+        aip_upload_image($image, $post_id);
     }
 }
