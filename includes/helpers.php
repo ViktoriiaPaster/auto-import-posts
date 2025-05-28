@@ -23,6 +23,11 @@ function aip_fetch_posts()
         )
     ));
 
+    if (wp_remote_retrieve_response_code($response) !== 200) {
+        error_log('API Error: ' . wp_remote_retrieve_body($response));
+        return [];
+    }
+
     if (is_wp_error($response)) {
         $error_message = $response->get_error_message();
         error_log('API Error:' . $error_message);
