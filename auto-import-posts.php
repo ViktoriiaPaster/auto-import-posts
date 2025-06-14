@@ -16,7 +16,10 @@ if (!defined('ABSPATH')) {
 define('AIP_PLUGIN_URL', plugin_dir_url(__FILE__));
 define('AIP_PLUGIN_PATH', plugin_dir_path(__FILE__));
 
+require_once AIP_PLUGIN_PATH . 'includes/admin.php';
+require_once AIP_PLUGIN_PATH . 'includes/fetch-posts.php';
 require_once AIP_PLUGIN_PATH . 'includes/helpers.php';
+require_once AIP_PLUGIN_PATH . 'includes/insert-posts.php';
 require_once AIP_PLUGIN_PATH . 'includes/hooks.php';
 require_once AIP_PLUGIN_PATH . 'includes/shortcode.php';
 
@@ -31,3 +34,9 @@ add_action('aip_cron_hook', 'aip_handle_insert_posts');
 
 // Handle shortcode adding
 add_shortcode('aip', 'aip_handle_shortcode');
+
+// Add option page
+add_action('admin_menu', 'aip_add_option_page');
+
+// Add settings field
+add_action('admin_init', 'aip_add_api_settings');

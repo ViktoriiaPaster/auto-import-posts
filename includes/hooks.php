@@ -34,11 +34,10 @@ function aip_handle_insert_posts()
     }
 
     foreach ($posts as $post) {
-        $array = get_object_vars($post);
-        $title = $array['title'];
+        $title = $post['title'];
 
         if (!post_exists($title)) {
-            aip_insert_post($array);
+            aip_insert_post($post);
         }
     }
 }
